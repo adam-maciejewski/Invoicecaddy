@@ -1,0 +1,76 @@
+---
+import { Image } from "astro:assets";
+import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
+import videoSrc from "@images/01-Demo-1144x1032px.mp4";
+import posterSrc from "@images/creating-invoice.png";
+import Icon from "@components/ui/icons/Icon.astro";
+---
+
+<section class="bg-white py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+      <div id="video-container-simple" class="relative order-last group lg:order-first">
+        <Image
+          id="video-poster-simple"
+          src={posterSrc}
+          alt="Video poster"
+          class="w-full rounded-lg shadow-lg"
+        />
+        <video
+          id="demo-video-simple"
+          class="hidden w-full rounded-lg shadow-lg"
+          src={videoSrc}
+          controls
+          playsinline
+        >
+          Your browser does not support the video tag.
+        </video>
+        <button
+          id="play-button-simple"
+          class="absolute inset-0 flex h-full w-full items-center justify-center"
+          aria-label="Play video"
+        >
+          <div class="flex h-24 w-24 items-center justify-center rounded-full bg-[rgba(17,24,39,0.8)] transition-all duration-300 group-hover:bg-[rgba(17,24,39,0.6)]">
+            <Icon name="play" class="ml-2 h-12 w-12 text-white" />
+          </div>
+        </button>
+      </div>
+      <div class="text-center lg:text-left">
+        <h2 class="text-3xl font-bold tracking-tight text-neutral-800 sm:text-4xl">
+          Begin with a simple way to invoice
+        </h2>
+        <ul class="mt-8 list-disc list-inside space-y-4 text-lg text-neutral-600">
+          <li>Simple integration with Quickbooks both ways</li>
+          <li>Issue invoices in Quickbooks and automate payments in Invoice Caddy</li>
+          <li>Send invoices issued in Invoice Caddy to Quickbooks using the benefits of both platforms</li>
+          <li>Add attachments to cost estimates or other documents for better communication with customers</li>
+        </ul>
+        <div class="mt-8">
+          <PrimaryCTA url="/how-it-works" title="How It Works" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const videoSimple = document.getElementById('demo-video-simple') as HTMLVideoElement;
+  const playButtonSimple = document.getElementById('play-button-simple');
+  const posterSimple = document.getElementById('video-poster-simple');
+
+  if (videoSimple && playButtonSimple && posterSimple) {
+    playButtonSimple.addEventListener('click', () => {
+      posterSimple.style.display = 'none';
+      playButtonSimple.style.display = 'none';
+      videoSimple.style.display = 'block';
+      videoSimple.play();
+    });
+
+    videoSimple.addEventListener('ended', () => {
+      videoSimple.style.display = 'none';
+      posterSimple.style.display = 'block';
+      playButtonSimple.style.display = 'flex';
+      videoSimple.currentTime = 0;
+    });
+  }
+</script> 

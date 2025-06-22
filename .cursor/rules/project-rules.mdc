@@ -1,0 +1,53 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+### Zestaw Reguł i Kontekst Projektu
+
+**1. Cel Projektu:**
+Celem jest wierne odtworzenie funkcjonalności i wyglądu strony `invoicecaddy.io` w oparciu o istniejący motyw Astro o nazwie "ScrewFast". Projekt zakłada również refaktoryzację i usunięcie niepotrzebnych elementów z motywu.
+
+**2. Technologie i Struktura:**
+*   **Framework:** Astro
+*   **Styling:** Tailwind CSS z niestandardową paletą kolorów zdefiniowaną w `tailwind.config.cjs`.
+*   **Struktura Komponentów:** Projekt wykorzystuje komponenty Astro (`.astro`) zlokalizowane w `src/components`. Kluczowe, reużywalne komponenty znajdują się w `src/components/ui`.
+*   **Zarządzanie Treścią:**
+    *   Większość treści (teksty, nagłówki) jest przekazywana bezpośrednio do komponentów jako właściwości (props) w plikach stron (np. `src/pages/index.astro`).
+    *   Dane dla sekcji cennika (`PricingSection`) są zarządzane przez zewnętrzny plik `src/data_files/pricing.json`.
+*   **Ikony:** Ikony SVG są centralnie zarządzane w pliku `src/components/ui/icons/icons.ts`, co pozwala na ich łatwe reużywanie w całym projekcie.
+*   **Nawigacja:** Linki nawigacyjne są zdefiniowane w `src/utils/navigation.ts`.
+
+**3. Kluczowe Decyzje Architektoniczne i Strategiczne:**
+*   **Stopniowa Refaktoryzacja:** Zamiast natychmiastowego usuwania nieużywanych funkcji z motywu (i18n, tryb ciemny, blog), zdecydowaliśmy się na strategię dwuetapową: najpierw ich "miękkie" wyłączenie w kodzie, a następnie fizyczne usunięcie plików w dedykowanej fazie refaktoryzacji na końcu projektu.
+*   **Minimalizacja Danych Zewnętrznych:** Ustalono, że tylko sekcja cennika będzie zasilana z pliku JSON. Pozostałe treści są statycznie osadzone w komponentach na stronach, co upraszcza zarządzanie i zapobiega nadmiernemu skomplikowaniu.
+*   **Dostosowywanie Stylów:** Modyfikacje wyglądu są realizowane wyłącznie za pomocą klas Tailwind CSS, bez importowania dodatkowych, zewnętrznych arkuszy stylów. Zmiany są wprowadzane bezpośrednio w plikach komponentów `.astro`.
+
+**4. Plan Pracy (Fazy Projektu):**
+*   **Faza 0 (Konfiguracja):**
+    *   Wyłączenie i18n i trybu ciemnego.
+    *   Aktualizacja nawigacji i zastąpienie komponentu logowania numerem telefonu.
+    *   Konfiguracja niestandardowej palety kolorów w Tailwind CSS.
+    *   Podmiana logo.
+*   **Faza 1 i 2 (Budowa Strony Głównej):**
+    *   Uproszczenie stopki (`FooterSection`).
+    *   Budowa strony `index.astro` od zera poprzez tworzenie i adaptację komponentów dla poszczególnych sekcji: `HeroSection`, `FeatureGrid`, `HowItWorks`, `PricingSection`, `OnboardingSection`.
+*   **Faza 3 (Podstrony):**
+    *   Stworzenie szkieletów dla podstron `how-it-works` i `demo`.
+    *   Uproszczenie strony kontaktowej (`contact.astro`).
+*   **Faza 4 (Finalizacja):**
+    *   Dodanie brakujących ikon do `icons.ts`.
+    *   Aktualizacja `FeatureGrid` w celu użycia nowych ikon.
+*   **Faza 5 (Refaktoryzacja):**
+    *   Fizyczne usunięcie nieużywanych plików i katalogów (blog, dokumentacja, i18n).
+    *   Wyczyszczenie pliku `content.config.ts`.
+*   **Faza 6 (Stylowanie i Wygładzanie):**
+    *   Stopniowe dostosowywanie stylów komponentów (`Navbar`, `NavLink` itd.), aby idealnie pasowały do `invoicecaddy.io`.
+
+**5. Rozwiązane Problemy Techniczne:**
+*   **Błąd aliasu ścieżki:** Problem z importem logo został rozwiązany przez dodanie aliasu `@assets` w `tsconfig.json`.
+*   **Błędy importu po refaktoryzacji:** Naprawiono błędy importu w `FooterSection.astro` i `index.astro` wynikające ze zmian w plikach `navigation.ts` i `pricing.json`.
+*   **Niedopasowanie danych w `PricingSection`:** Poprawiono odwołania do planów cenowych w komponencie, aby pasowały do zaktualizowanej struktury danych w `pricing.json`.
+
+**6. Język Komunikacji:**
+*   Współpraca odbywa się w języku polskim.

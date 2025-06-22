@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
+import videoSrc from "@images/02-Demo-1144x1032-1.mp4";
+import posterSrc from "@images/creating-payment.png";
+import Icon from "@components/ui/icons/Icon.astro";
+---
+
+<section class="bg-white py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+      <div class="text-center lg:text-left">
+        <h2 class="text-3xl font-bold tracking-tight text-neutral-800 sm:text-4xl">
+          Create payments
+        </h2>
+        <ul class="mt-8 list-disc list-inside space-y-4 text-lg text-neutral-600">
+          <li>Record offline payments</li>
+          <li>Generate an online payment document with your invoice</li>
+          <li>Use previously saved payments as templates</li>
+          <li>Use automation for recurring payment requests</li>
+          <li>Generate payment links and deliver them by email or any other channel</li>
+        </ul>
+        <div class="mt-8">
+          <p class="mb-4 text-lg text-neutral-600">Dive into our free demo and experience streamlined invoicing</p>
+          <PrimaryCTA url="/demo" title="Try Demo Now" />
+        </div>
+      </div>
+      <div id="video-container" class="relative group">
+        <Image
+          id="video-poster"
+          src={posterSrc}
+          alt="Video poster"
+          class="w-full rounded-lg shadow-lg"
+        />
+        <video
+          id="demo-video"
+          class="hidden w-full rounded-lg shadow-lg"
+          src={videoSrc}
+          controls
+          playsinline
+        >
+          Your browser does not support the video tag.
+        </video>
+        <button
+          id="play-button"
+          class="absolute inset-0 flex h-full w-full items-center justify-center"
+          aria-label="Play video"
+        >
+          <div class="flex h-24 w-24 items-center justify-center rounded-full bg-[rgba(17,24,39,0.8)] transition-all duration-300 group-hover:bg-[rgba(17,24,39,0.6)]">
+            <Icon name="play" class="ml-2 h-12 w-12 text-white" />
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const video = document.getElementById('demo-video') as HTMLVideoElement;
+  const playButton = document.getElementById('play-button');
+  const poster = document.getElementById('video-poster');
+
+  function playVideo() {
+    poster.style.display = 'none';
+    playButton.style.display = 'none';
+    video.style.display = 'block';
+    video.play();
+  }
+
+  playButton.addEventListener('click', playVideo);
+
+  video.addEventListener('ended', () => {
+    video.style.display = 'none';
+    poster.style.display = 'block';
+    playButton.style.display = 'flex';
+    video.currentTime = 0;
+  });
+</script> 

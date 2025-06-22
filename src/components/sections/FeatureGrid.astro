@@ -3,7 +3,8 @@ import Icon from "@components/ui/icons/Icon.astro";
 
 interface FeatureItem {
   icon: string;
-  description: string;
+  strongText?: string;
+  text: string;
 }
 
 interface Props {
@@ -35,7 +36,10 @@ const gridColsClass = `md:grid-cols-${columns}`;
     {features.map((feature) => (
       <div class="flex items-start">
         <Icon name={feature.icon} class="mr-4 mt-1 h-6 w-6 flex-shrink-0 text-sky-500" />
-        <p class="text-neutral-700" set:html={feature.description}></p>
+        <p class="text-neutral-700">
+            {feature.strongText && <strong>{feature.strongText}</strong>}
+            {feature.text}
+        </p>
       </div>
     ))}
   </div>

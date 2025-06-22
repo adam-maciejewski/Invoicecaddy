@@ -24,8 +24,8 @@ export default defineConfig({
   integrations: [
     sitemap(),
     compressor({
-      gzip: false,
-      brotli: true,
+    gzip: false,
+    brotli: true,
     }),
   ],
   experimental: {

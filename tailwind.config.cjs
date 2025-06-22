@@ -15,6 +15,9 @@ module.exports = {
         accent: {
           DEFAULT: '#FBBF24', // yellow
         },
+        brandGreen: {
+          DEFAULT: '#788E45',
+        }
       },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],

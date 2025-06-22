@@ -3,6 +3,8 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import HeroSection from "@components/sections/landing/HeroSection.astro";
 import FeatureGrid from "@components/sections/FeatureGrid.astro";
 import HowItWorks from "@components/sections/HowItWorks.astro";
+import SimpleInvoice from "@components/sections/SimpleInvoice.astro";
+import CreatePayments from "@components/sections/CreatePayments.astro";
 import PricingSection from "@components/sections/pricing/PricingSection.astro";
 import pricing from "@data/pricing.json";
 import OnboardingSection from "@components/sections/OnboardingSection.astro";
@@ -30,15 +32,18 @@ import OnboardingSection from "@components/sections/OnboardingSection.astro";
     features={[
       {
         icon: "invoice",
-        description: "<strong>Create invoice:</strong> Create & send branded invoices, and manage automated, recurring invoices.",
+        strongText: "Create invoice: ",
+        text: "Create & send branded invoices, and manage automated, recurring invoices.",
       },
       {
         icon: "collect",
-        description: "<strong>Collect payments:</strong> Get paid with personalized landing pages, send payment links, and set up automated payment reminders.",
+        strongText: "Collect payments: ",
+        text: "Get paid with personalized landing pages, send payment links, and set up automated payment reminders.",
       },
       {
         icon: "funds",
-        description: "<strong>Manage your corporate funds:</strong> Integrate with QuickBooks effortlessly and review your “customer invoice balances” using personalized dashboard.",
+        strongText: "Manage your corporate funds: ",
+        text: "Integrate with QuickBooks effortlessly and review your “customer invoice balances” using personalized dashboard.",
       },
     ]}
   />
@@ -47,15 +52,17 @@ import OnboardingSection from "@components/sections/OnboardingSection.astro";
     subTitle="Discover the powerful features that make Invoice Caddy the ideal invoicing solution for your business needs"
     columns={2}
     features={[
-        { icon: "auto", description: "<strong>Automated Invoicing and Reminders:</strong> Create and send professional invoices automatically and set up customized payment reminders to reduce late payments." },
-        { icon: "pricing", description: "<strong>Dual Pricing Strategy:</strong> Set different prices for card and cash payments and comply with dual pricing regulations effortlessly." },
-        { icon: "gateways", description: "<strong>Multiple Payment Gateways:</strong> Offer various payment options to your customers and integrate with popular payment processors for seamless transactions." },
-        { icon: "portal", description: "<strong>Customer Portal:</strong> Provide clients with access to their own secure portal and allow customers to view, manage, and pay invoices online." },
-        { icon: "terminal", description: "<strong>Powerful Virtual Terminal:</strong> Process card-not-present transactions with ease and accept payments over the phone or in-store without extra hardware." },
-        { icon: "offline", description: "<strong>Flexible Offline Payment Solutions:</strong> Manage cash, checks, and alternative payment methods and customize payment methods to fit your business needs." }
+        { icon: "auto", strongText: "Automated Invoicing and Reminders: ", text: "Create and send professional invoices automatically and set up customized payment reminders to reduce late payments." },
+        { icon: "pricing", strongText: "Dual Pricing Strategy: ", text: "Set different prices for card and cash payments and comply with dual pricing regulations effortlessly." },
+        { icon: "gateways", strongText: "Multiple Payment Gateways: ", text: "Offer various payment options to your customers and integrate with popular payment processors for seamless transactions." },
+        { icon: "portal", strongText: "Customer Portal: ", text: "Provide clients with access to their own secure portal and allow customers to view, manage, and pay invoices online." },
+        { icon: "terminal", strongText: "Powerful Virtual Terminal: ", text: "Process card-not-present transactions with ease and accept payments over the phone or in-store without extra hardware." },
+        { icon: "offline", strongText: "Flexible Offline Payment Solutions: ", text: "Manage cash, checks, and alternative payment methods and customize payment methods to fit your business needs." }
     ]}
   />
   <HowItWorks />
+  <SimpleInvoice />
+  <CreatePayments />
   <PricingSection pricing={pricing} />
   <OnboardingSection />
   <!-- Sekcje strony głównej będą dodawane tutaj -->

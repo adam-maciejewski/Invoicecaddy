@@ -78,11 +78,15 @@ const homeUrl = "/";
       >
         <!-- Navigation links and Authentication component -->
         {navBarLinks.map((link) => (
-          <NavLink url={link.url} name={link.name} />
+          <NavLink
+            url={link.url}
+            name={link.name}
+            class={link.name === "START" ? "bg-brandGreen text-white hover:bg-opacity-90 px-4" : ""}
+          />
         ))}
 
         <div class="flex items-center gap-x-2">
-          <Authentication />
+        <Authentication />
         </div>
       </div>
     </div>
