@@ -1,0 +1,97 @@
+---
+import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
+import Icon from "@components/ui/icons/Icon.astro";
+
+const steps = [
+  { title: "Fill onboarding request", step: "I" },
+  { title: "Send onboarding request", step: "II" },
+  { title: "Our team will contact you", step: "III" },
+  { title: "Finalize onboarding with details", step: "IV" },
+];
+---
+
+<section class="bg-neutral-50 py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-neutral-800 sm:text-4xl">
+        Ready to take a full swing?
+      </h2>
+      <p class="mt-4 text-lg text-neutral-600">
+        Fill out the form and start invoicing
+      </p>
+    </div>
+
+    <div
+      class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3"
+    >
+      <!-- Retailer Onboarding -->
+      <div
+        class="flex flex-col rounded-2xl bg-white p-8 shadow-lg ring-1 ring-neutral-200"
+      >
+        <h3 class="text-lg font-semibold text-neutral-800">
+          Retailer onboarding
+        </h3>
+        <p class="mt-4 text-sm text-neutral-600">
+          Start your self-setup process with ease. Fill out what you know – if
+          any information is missing, we'll reach out to you for additional
+          details. You can still submit the form.
+        </p>
+        <div class="mt-6">
+          <PrimaryCTA title="Sign Up" url="#" />
+        </div>
+      </div>
+
+      <!-- Partner Onboarding -->
+      <div
+        class="flex flex-col rounded-2xl bg-white p-8 shadow-lg ring-1 ring-neutral-200"
+      >
+        <h3 class="text-lg font-semibold text-neutral-800">
+          Partner onboarding
+        </h3>
+        <p class="mt-4 text-sm text-neutral-600">
+          We'll redirect you to a specialized form designed for major financial
+          players. There, you can complete the onboarding process independently.
+          Let us tailor our platform to match your business needs.
+        </p>
+        <div class="mt-6">
+          <PrimaryCTA title="Become a Partner" url="#" />
+        </div>
+      </div>
+
+      <!-- Enterprise Onboarding -->
+      <div
+        class="flex flex-col rounded-2xl bg-white p-8 shadow-lg ring-1 ring-neutral-200"
+      >
+        <h3 class="text-lg font-semibold text-neutral-800">
+          Enterprise onboarding
+        </h3>
+        <p class="mt-4 text-sm text-neutral-600">
+          If you are a super ISO, large bank, or other large prospective partner
+          and are interested in offering Invoice Caddy to your client base,
+          please let us know!
+        </p>
+        <div class="mt-6">
+          <PrimaryCTA title="Let's Talk" url="#" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Onboarding Steps -->
+    <div
+      class="mt-16 grid grid-cols-1 gap-y-10 text-center md:grid-cols-4 md:gap-x-8"
+    >
+      {
+        steps.map((step, index) => (
+          <div class="flex items-center justify-center gap-4 md:flex-col md:gap-2">
+            <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-sky-500 text-white">
+              <span class="font-bold">{step.step}</span>
+            </div>
+            <p class="font-semibold text-neutral-700 md:mt-4">
+              {step.title}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section> 

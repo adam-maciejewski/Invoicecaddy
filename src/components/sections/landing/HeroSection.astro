@@ -1,94 +1,59 @@
 ---
 // Import the necessary dependencies
 import { Image } from "astro:assets";
+import heroImage from "@images/hero4.jpg";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
-import SecondaryCTA from "@components/ui/buttons/SecondaryCTA.astro";
-import ReviewComponent from "@components/ui/blocks/ReviewComponent.astro";
 
 // Define props from Astro
-const {
-  title,
-  subTitle,
-  primaryBtn,
-  primaryBtnURL,
-  secondaryBtn,
-  secondaryBtnURL,
-  withReview,
-  avatars,
-  starCount,
-  rating,
-  reviews,
-  src,
-  alt
-} = Astro.props;
+const { title, subTitle } = Astro.props;
 
 // Define TypeScript interface for props
 interface Props {
   title: string;
   subTitle?: string;
-  primaryBtn?: string;
-  primaryBtnURL?: string;
-  secondaryBtn?: string;
-  secondaryBtnURL?: string;
-  withReview?: boolean;
-  avatars?: Array<string>;
-  starCount?: number;
-  rating?: string;
-  reviews?: string;
-  src?: any;
-  alt?: string;
 }
 ---
 
 <!-- Defining a grid container that holds all the content -->
 <section
-  class="mx-auto grid max-w-[85rem] gap-4 px-4 py-14 sm:px-6 md:grid-cols-2 md:items-center md:gap-8 lg:px-8 2xl:max-w-full"
+  class="relative mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8 lg:py-20"
 >
-  <!-- Title and description -->
-  <div>
-    <!-- Each h1 and p tag renders a portion of the title and subTitle defined above -->
-    <h1
-      class="block text-balance text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 sm:text-4xl lg:text-6xl lg:leading-tight"
-    >
-      <!-- About Fragment: https://docs.astro.build/en/basics/astro-syntax/#fragments -->
-      <Fragment set:html={title} />
-    </h1>
-    {subTitle &&
-    <p
-      class="mt-3 text-pretty text-lg leading-relaxed text-neutral-700 dark:text-neutral-400 lg:w-4/5"
-    >
-      {subTitle}
-    </p>
-  }
-    <!-- Action Button Section: This section includes two CTAs with their own styles and URL -->
-    <div class="mt-7 grid w-full gap-3 sm:inline-flex">
-      {primaryBtn && 
-      <PrimaryCTA title={primaryBtn} url={primaryBtnURL} />
+  <div class="grid items-center gap-12 md:grid-cols-2">
+    <!-- Title and description -->
+    <div class="text-center md:text-left">
+      <div class="mb-4 inline-block">
+        <p class="font-semibold text-neutral-800">
+          <span class="font-bold">A NEW PAYMENT</span> has been registered
+        </p>
+        <p class="text-right text-2xl font-bold text-green-600">+$3,500</p>
+      </div>
+      <h1
+        class="block text-balance text-5xl font-bold tracking-tight text-neutral-800 sm:text-6xl lg:text-7xl"
+      >
+        <Fragment set:html={title} />
+      </h1>
+      {
+        subTitle && (
+          <p class="mt-4 text-pretty text-xl text-neutral-700">{subTitle}</p>
+        )
       }
-      {secondaryBtn && 
-      <SecondaryCTA title={secondaryBtn} url={secondaryBtnURL} />
-      }
+      <div class="mt-8">
+        <PrimaryCTA
+          text="Get Started"
+          url="/#pricing"
+          variant="primary"
+          size="large"
+        />
+      </div>
     </div>
-
-    <!-- Review Section: This section presents avatars, review ratings and the number of reviews -->
-    { withReview ? (
-    <ReviewComponent avatars={avatars} starCount={starCount} rating={rating} reviews={reviews} />
-    ) : "" }
-
-  </div>
-  <!-- Hero Image Section -->
-  <div class="flex w-full">
-      <div class="top-12 overflow-hidden">
-	{src && alt &&
-	<Image
-        src={src}
-        alt={alt}
-        class="h-full w-full scale-110 object-cover object-center"
-        draggable={"false"}
-        loading={"eager"}
-        format={"avif"}
-	 />
-	}
+    <!-- Image section -->
+    <div class="flex items-center justify-center">
+      <Image
+        src={heroImage}
+        alt="Invoice Caddy Hero Image"
+        class="h-auto w-full max-w-xl rounded-lg"
+        loading="eager"
+      />
     </div>
   </div>
 </section>

@@ -1,0 +1,111 @@
+---
+import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
+import Icon from "@components/ui/icons/Icon.astro";
+// No props needed for this static component
+---
+
+<section class="bg-neutral-50 py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-neutral-800 sm:text-4xl">
+        How it works
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-neutral-600">
+        Begin by creating your invoice – the rest of the process is automatic
+      </p>
+      <p class="mx-auto mt-2 max-w-3xl text-sm text-neutral-500">
+        Invoice Caddy tells you how to use the existing template for the
+        subsequent invoices and payment receipts. It gives you the possibility
+        to set up notifications reminding your customers about overdue
+        payments.
+      </p>
+    </div>
+
+    <div
+      class="relative mt-16 grid grid-cols-1 gap-y-12 text-center md:grid-cols-4 md:gap-x-8"
+    >
+      <!-- Step 1 -->
+      <div class="flex flex-col items-center">
+        <div
+          class="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-md"
+        >
+          <span class="text-xl font-bold text-sky-500">I</span>
+        </div>
+        <h3 class="mt-4 text-sm font-bold uppercase tracking-wider text-neutral-500">
+          step I
+        </h3>
+        <p class="mt-2 font-semibold text-neutral-800">begin</p>
+        <p class="mt-1 text-neutral-600">Create<br />Invoice</p>
+      </div>
+
+      <!-- Arrow 1 -->
+      <div
+        class="absolute left-1/2 top-8 -translate-x-1/2 -translate-y-full transform md:left-1/4 md:top-1/2 md:-translate-y-1/2 md:translate-x-0"
+      >
+        <Icon name="arrow" class="h-6 w-auto text-neutral-300 md:h-auto md:w-20" />
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flex flex-col items-center">
+        <div
+          class="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-md"
+        >
+          <span class="text-xl font-bold text-sky-500">II</span>
+        </div>
+        <h3 class="mt-4 text-sm font-bold uppercase tracking-wider text-neutral-500">
+          step II
+        </h3>
+        <p class="mt-2 font-semibold text-neutral-800">auto</p>
+        <p class="mt-1 text-neutral-600">Document<br />Send</p>
+      </div>
+      
+      <!-- Arrow 2 -->
+      <div
+        class="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-full transform md:left-2/4 md:top-1/2 md:-translate-y-1/2 md:translate-x-0"
+      >
+        <Icon name="arrow" class="h-6 w-auto text-neutral-300 md:h-auto md:w-20" />
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flex flex-col items-center">
+        <div
+          class="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-md"
+        >
+          <span class="text-xl font-bold text-sky-500">III</span>
+        </div>
+        <h3 class="mt-4 text-sm font-bold uppercase tracking-wider text-neutral-500">
+          step III
+        </h3>
+        <p class="mt-2 font-semibold text-neutral-800">auto</p>
+        <p class="mt-1 text-neutral-600">Scheduled<br />Reminder</p>
+      </div>
+      
+      <!-- Arrow 3 -->
+       <div
+        class="absolute left-1/2 top-2/3 -translate-x-1/2 -translate-y-full transform md:left-3/4 md:top-1/2 md:-translate-y-1/2 md:translate-x-0"
+      >
+        <Icon name="arrow" class="h-6 w-auto text-neutral-300 md:h-auto md:w-20" />
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flex flex-col items-center">
+        <div
+          class="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-md"
+        >
+          <span class="text-xl font-bold text-sky-500">IV</span>
+        </div>
+        <h3 class="mt-4 text-sm font-bold uppercase tracking-wider text-neutral-500">
+          step IV
+        </h3>
+        <p class="mt-2 font-semibold text-neutral-800">auto</p>
+        <p class="mt-1 text-neutral-600">Collect<br />Payment</p>
+      </div>
+    </div>
+    <div class="mt-16 text-center">
+        <p class="font-semibold text-neutral-800">Create<br/>payment automation by<br/>saving this flow</p>
+        <div class="mt-8">
+            <PrimaryCTA url="/how-it-works" title="How It Works" />
+        </div>
+    </div>
+  </div>
+</section> 

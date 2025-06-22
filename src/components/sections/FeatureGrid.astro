@@ -1,0 +1,42 @@
+---
+import Icon from "@components/ui/icons/Icon.astro";
+
+interface FeatureItem {
+  icon: string;
+  description: string;
+}
+
+interface Props {
+  title: string;
+  subTitle?: string;
+  features: FeatureItem[];
+  columns?: number;
+}
+
+const { title, subTitle, features, columns = 1 } = Astro.props;
+const gridColsClass = `md:grid-cols-${columns}`;
+---
+
+<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+  <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
+    <h2
+      class="text-balance text-2xl font-bold tracking-tight text-neutral-800 md:text-4xl md:leading-tight"
+    >
+      {title}
+    </h2>
+    {
+      subTitle && (
+        <p class="mt-1 text-pretty text-neutral-600">{subTitle}</p>
+      )
+    }
+  </div>
+
+  <div class={`grid grid-cols-1 gap-x-8 gap-y-6 ${gridColsClass} md:gap-y-8`}>
+    {features.map((feature) => (
+      <div class="flex items-start">
+        <Icon name={feature.icon} class="mr-4 mt-1 h-6 w-6 flex-shrink-0 text-sky-500" />
+        <p class="text-neutral-700" set:html={feature.description}></p>
+      </div>
+    ))}
+  </div>
+</section> 
