@@ -1,13 +1,45 @@
 ---
 import { Image } from "astro:assets";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
+import BaseList from "@components/ui/lists/BaseList.astro";
+import ListItem from "@components/ui/lists/ListItem.astro";
 import videoSrc from "@images/01-Demo-1144x1032px.mp4";
+import videoSrc2 from "@images/02-Demo-1144x1032-1.mp4";
 import posterSrc from "@images/creating-invoice.png";
+import posterSrc2 from "@images/creating-payment.png";
 import Icon from "@components/ui/icons/Icon.astro";
+import SectionHeading from "@components/ui/typography/SectionHeading.astro";
+import SubHeading from "@components/ui/typography/SubHeading.astro";
 ---
 
-<section class="bg-white py-20 sm:py-24">
+<style>
+  .custom-list {
+    list-style: none;
+    padding-left: 2rem;
+  }
+
+  .custom-list li {
+    position: relative;
+    padding-left: 0.5rem;
+  }
+
+  .custom-list li::before {
+    position: absolute;
+    top: 18px;
+    left: -2rem;
+    transform: translate(0, -50%) rotate(45deg);
+    display: block;
+    content: '';
+    height: 16px;
+    width: 16px;
+    background: #D9D9D9;
+    border-radius: 3px;
+  }
+</style>
+
+<section class="bg-neutral-50 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- First subsection - Simple Invoice -->
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
       <div id="video-container-simple" class="relative order-last group lg:order-first">
         <Image
@@ -30,30 +62,80 @@ import Icon from "@components/ui/icons/Icon.astro";
           class="absolute inset-0 flex h-full w-full items-center justify-center"
           aria-label="Play video"
         >
-          <div class="flex h-24 w-24 items-center justify-center rounded-full bg-[rgba(17,24,39,0.8)] transition-all duration-300 group-hover:bg-[rgba(17,24,39,0.6)]">
+          <div class="flex h-24 w-24 items-center justify-center rounded-full bg-play-overlay transition-all duration-300 group-hover:bg-play-overlay-hover">
             <Icon name="play" class="ml-2 h-12 w-12 text-white" />
           </div>
         </button>
       </div>
       <div class="text-center lg:text-left">
-        <h2 class="text-3xl font-bold tracking-tight text-neutral-800 sm:text-4xl">
+        <SectionHeading>
           Begin with a simple way to invoice
-        </h2>
-        <ul class="mt-8 list-disc list-inside space-y-4 text-lg text-neutral-600">
-          <li>Simple integration with Quickbooks both ways</li>
-          <li>Issue invoices in Quickbooks and automate payments in Invoice Caddy</li>
-          <li>Send invoices issued in Invoice Caddy to Quickbooks using the benefits of both platforms</li>
-          <li>Add attachments to cost estimates or other documents for better communication with customers</li>
-        </ul>
+        </SectionHeading>      
+        <BaseList class="mt-8 space-y-4 text-lg text-neutral-600">
+          <ListItem>Simple integration with Quickbooks both ways</ListItem>
+          <ListItem>Issue invoices in Quickbooks and automate payments in Invoice Caddy</ListItem>
+          <ListItem>Send invoices issued in Invoice Caddy to Quickbooks using the benefits of both platforms</ListItem>
+          <ListItem>Add attachments to cost estimates or other documents for better communication with customers</ListItem>
+        </BaseList>
         <div class="mt-8">
           <PrimaryCTA url="/how-it-works" title="How It Works" />
         </div>
+      </div>
+    </div>
+
+    <!-- Separator with responsive gap -->
+    <div class="h-[70px] lg:h-4"></div>
+
+    <!-- Second subsection - Create Payments -->
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+      <div class="text-center lg:text-left">
+        <SectionHeading>
+          Create payments
+        </SectionHeading>        
+        <BaseList variant="default" class="mt-8 space-y-4 text-lg text-neutral-600">
+          <ListItem>Record offline payments</ListItem>
+          <ListItem>Generate an online payment document with your invoice</ListItem>
+          <ListItem>Use previously saved payments as templates</ListItem>
+          <ListItem>Use automation for recurring payment requests</ListItem>
+          <ListItem>Generate payment links and deliver them by email or any other channel</ListItem>
+        </BaseList>
+        <div class="mt-8">
+          <p class="mb-4 text-lg text-neutral-600">Dive into our free demo and experience streamlined invoicing</p>
+          <PrimaryCTA url="/demo" title="Try Demo Now" />
+        </div>
+      </div>
+      <div id="video-container" class="relative group">
+        <Image
+          id="video-poster"
+          src={posterSrc2}
+          alt="Video poster"
+          class="w-full rounded-lg shadow-lg"
+        />
+        <video
+          id="demo-video"
+          class="hidden w-full rounded-lg shadow-lg"
+          src={videoSrc2}
+          controls
+          playsinline
+        >
+          Your browser does not support the video tag.
+        </video>
+        <button
+          id="play-button"
+          class="absolute inset-0 flex h-full w-full items-center justify-center"
+          aria-label="Play video"
+        >
+          <div class="flex h-24 w-24 items-center justify-center rounded-full bg-play-overlay transition-all duration-300 group-hover:bg-play-overlay-hover">
+            <Icon name="play" class="ml-2 h-12 w-12 text-white" />
+          </div>
+        </button>
       </div>
     </div>
   </div>
 </section>
 
 <script>
+  // First video
   const videoSimple = document.getElementById('demo-video-simple') as HTMLVideoElement;
   const playButtonSimple = document.getElementById('play-button-simple');
   const posterSimple = document.getElementById('video-poster-simple');
@@ -71,6 +153,27 @@ import Icon from "@components/ui/icons/Icon.astro";
       posterSimple.style.display = 'block';
       playButtonSimple.style.display = 'flex';
       videoSimple.currentTime = 0;
+    });
+  }
+
+  // Second video
+  const video = document.getElementById('demo-video') as HTMLVideoElement;
+  const playButton = document.getElementById('play-button');
+  const poster = document.getElementById('video-poster');
+
+  if (video && playButton && poster) {
+    playButton.addEventListener('click', () => {
+      poster.style.display = 'none';
+      playButton.style.display = 'none';
+      video.style.display = 'block';
+      video.play();
+    });
+
+    video.addEventListener('ended', () => {
+      video.style.display = 'none';
+      poster.style.display = 'block';
+      playButton.style.display = 'flex';
+      video.currentTime = 0;
     });
   }
 </script> 

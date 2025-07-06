@@ -1,6 +1,7 @@
 ---
 import TestimonialItem from "./TestimonialItem.astro";
 import StatsGrid from "../../ui/blocks/StatsGrid.astro";
+import SectionHeading from "@components/ui/typography/SectionHeading.astro";
 
 const {
   title,
@@ -40,12 +41,10 @@ type StatProps = {
   >
     <div class="lg:col-span-5 lg:col-start-1">
       <!-- Title and Subtitle -->
-      <div class="mb-8">
-        <h2
-          class="mb-2 text-3xl font-bold text-neutral-800 dark:text-neutral-200 lg:text-4xl"
-        >
+      <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+        <SectionHeading>
           {title}
-        </h2>
+        </SectionHeading>
         {subTitle &&
         <p class="text-neutral-600 dark:text-neutral-400">
           {subTitle}

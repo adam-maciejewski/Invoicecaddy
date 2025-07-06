@@ -3,6 +3,7 @@
 import TabNav from "@components/ui/blocks/TabNav.astro";
 import TabContent from "@components/ui/blocks/TabContent.astro";
 import Icon from "@components/ui/icons/Icon.astro";
+import SectionHeading from "@components/ui/typography/SectionHeading.astro";
 
 // Define props from Astro
 const { title, tabs } = Astro.props;
@@ -34,12 +35,10 @@ interface Props {
     >
       <!-- Section's heading and tab navigation -->
       <div class="mb-10 lg:order-2 lg:col-span-6 lg:col-start-8 lg:mb-0">
-        <h2
-          class="text-2xl font-bold text-neutral-800 dark:text-neutral-200 sm:text-3xl"
-        >
+        <SectionHeading>
           <!-- About Fragment: https://docs.astro.build/en/basics/astro-syntax/#fragments -->
           <Fragment set:html={title} />
-        </h2>
+        </SectionHeading>
         <!-- Tab navigation - use the attribute 'first' in the first TabNav for the component to work -->
         <nav class="mt-5 grid gap-4 md:mt-10" aria-label="Tabs" role="tablist">
           {

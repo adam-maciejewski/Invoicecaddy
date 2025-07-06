@@ -1,0 +1,18 @@
+---
+interface Props {
+  as?: 'h1' | 'h2' | 'h3';
+  class?: string;
+}
+
+const { 
+  as: Tag = 'h2',
+  class: className = ''
+} = Astro.props;
+
+// Bazowe style dla wszystkich nagłówków sekcji
+const baseStyles = "text-4xl font-bold tracking-tight text-neutral-900";
+---
+
+<Tag class:list={[baseStyles, className]}>
+  <slot />
+</Tag> 

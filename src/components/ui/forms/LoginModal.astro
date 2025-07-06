@@ -5,6 +5,7 @@ import PasswordInput from "./input/PasswordInput.astro";
 import Checkbox from "./input/Checkbox.astro";
 import AuthBtn from "@components/ui/buttons/AuthBtn.astro";
 import GoogleBtn from "@components/ui/buttons/GoogleBtn.astro";
+import SubHeading from "@components/ui/typography/SubHeading.astro";
 
 // Variables for customization of the LoginModal Component
 
@@ -30,14 +31,9 @@ const config = {
       >
         <div class="p-4 sm:p-7">
           <div class="text-center">
-            <div
-              class="block text-2xl font-bold text-neutral-800 dark:text-neutral-200"
-              role="heading"
-              aria-level="1"
-              aria-label={config.title}
-            >
-              {config.title}
-            </div>
+            <SubHeading variant="modal">
+              Sign in to your account
+            </SubHeading>
             <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
               {config.subTitle}
               <button

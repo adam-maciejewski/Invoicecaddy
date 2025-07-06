@@ -2,6 +2,12 @@
 // Import SecondaryCTA component for use in this module
 import SecondaryCTA from "@components/ui/buttons/SecondaryCTA.astro";
 import Icon from "@components/ui/icons/Icon.astro";
+import BaseList from "@components/ui/lists/BaseList.astro";
+import ListItem from "@components/ui/lists/ListItem.astro";
+import SectionHeading from "@components/ui/typography/SectionHeading.astro";
+import SubHeading from "@components/ui/typography/SubHeading.astro";
+import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
+import demoBg from "@images/demo_bg.png";
 
 // Define props from Astro
 const { pricing } = Astro.props;
@@ -43,78 +49,84 @@ interface PricingSectionProps {
 }
 ---
 
-<section class="bg-white py-20 sm:py-24">
+<section class="bg-white pt-20 pb-[105px]">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-2xl text-center">
-      <h2 class="text-3xl font-bold tracking-tight text-neutral-800 sm:text-4xl">
-      {pricing.title}
-    </h2>
-      {
-        pricing.subTitle && (
-          <p class="mt-4 text-lg text-neutral-600">{pricing.subTitle}</p>
-        )
-        }
+      <SectionHeading>
+        {pricing.title}
+      </SectionHeading>
     </div>
 
-    <div
-      class="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 md:max-w-4xl md:grid-cols-2 lg:max-w-5xl"
-    >
+    <div class="mx-auto mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
       {
-        pricing.plans.map((plan) => (
-      <div
-            class:list={[
-              "rounded-3xl p-8 ring-1 ring-neutral-200",
-              { "bg-neutral-50 ring-2 ring-sky-500": plan.isFeatured },
-            ]}
-      >
-            <h3 class="text-lg font-semibold leading-8 text-neutral-800">
-              {plan.name}
-          </h3>
-            <p class="mt-4 text-sm leading-6 text-neutral-600">
-              {plan.description}
-            </p>
-            <p class="mt-6 flex items-baseline gap-x-1">
-              <span class="text-4xl font-bold tracking-tight text-neutral-900">
-                {plan.price}
-              </span>
-              <span class="text-sm font-semibold leading-6 text-neutral-600">
-                {plan.billingFrequency}
-              </span>
-            </p>
-            <a
-              href={plan.purchaseLink}
-              class:list={[
-                "mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6",
-                plan.isFeatured
-                  ? "bg-sky-500 text-white hover:bg-sky-600"
-                  : "bg-white text-sky-500 ring-1 ring-inset ring-sky-200 hover:ring-sky-300",
-              ]}
-            >
-              {plan.purchaseBtnTitle}
-            </a>
-            <ul
-              role="list"
-              class="mt-8 space-y-3 text-sm leading-6 text-neutral-600"
-            >
-              {plan.features.map((feature) => (
-                <li class="flex gap-x-3">
-                  <Icon name="checkCircle" class="h-6 w-5 flex-none text-sky-500" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-      </div>
+        pricing.plans.map((plan, index) => (
+          <div class={`overflow-hidden rounded-lg ${index < 2 ? 'bg-white border border-[#7CA02F]' : 'bg-white ring-1 ring-neutral-200'}`}>
+            <div class="px-6 pt-[54px] pb-6">
+              <SubHeading variant="default" class="text-center text-[32px] mb-[30px]">
+                {plan.name}
+              </SubHeading>
+            </div>
+            <div class="bg-[#98B64B]">
+              <div class="min-h-[120px] flex flex-col justify-center text-center" style={index < 2 ? `background-image: url(${demoBg.src}); background-repeat: no-repeat; background-position: center;` : ''}>                
+                <div class="inline-block">
+                    <span class="text-5xl lg:text-[4rem] font-bold tracking-tight text-white">
+                        {plan.price}
+                    </span>
+                    <span class="text-xl lg:text-[2rem] font-semibold text-white">
+                        {plan.billingFrequency}
+                    </span>
+                </div>
+                <p class="text-xs text-white/90 inline-block lg:mr-[30%]">
+                    plus applicable sales taxes
+                </p>
+              </div>                                        
+            </div>
+            <div class="px-6 pt-12 pb-[69px]">
+                <div class="text-center lg:text-left">
+                    {plan.description && (
+                        <p class="text-base font-bold mb-2">
+                        {plan.description}
+                        </p>
+                    )}
+                    <BaseList variant="checked" class="space-y-1 font-semibold text-left inline-block">
+                        {plan.features.map((feature) => (
+                        <ListItem>{feature}</ListItem>
+                        ))}
+                    </BaseList>
+                </div>            
+            </div>
+          </div>
         ))
       }
-    </div>
-     <div class="mt-16 text-center">
-        <h3 class="text-lg font-semibold text-neutral-800">Custom</h3>
-        <p class="mt-4 text-neutral-600">
-            Contact us for enterprise solutions, large transaction volumes, or custom integrations.
-        </p>
-        <a href="/contact" class="mt-6 inline-block rounded-md bg-neutral-800 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-700">
-            Contact us
-        </a>
+
+      <!-- Custom Plan -->
+      <div class="overflow-hidden rounded-lg bg-white border border-[#7CA02F]">
+        <div class="px-6 pt-[54px] pb-6">
+          <SubHeading variant="default" class="text-center text-[32px] mb-[30px]">
+            Custom
+          </SubHeading>
+        </div>
+        <div class="min-h-[120px] flex justify-center items-center">
+          <SecondaryCTA url="/contact" title="Contact us" variant="big" />
+        </div>
+        <div class="px-6 pt-12 pb-[69px] text-center lg:text-left">
+          <BaseList variant="checked" class="space-y-1 font-semibold text-left inline-block">
+            {[
+              "Large transaction volume support",
+              "Custom integrations and workflows",
+              "Customized server setup",
+              "White label option",
+              "Individual support",
+              "Dedicated account manager",
+              "API access for custom development",
+              "Advanced security features",
+              "Bulk processing capabilities"
+            ].map((feature) => (
+              <ListItem>{feature}</ListItem>
+            ))}
+          </BaseList>
+        </div>
+      </div>
     </div>
   </div>
 </section>

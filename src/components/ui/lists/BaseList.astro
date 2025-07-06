@@ -1,0 +1,53 @@
+---
+interface Props {
+  variant?: 'default' | 'checked';
+  class?: string;
+}
+
+const { variant = 'default', class: className } = Astro.props;
+---
+
+<style>
+  .list {
+    @apply list-none;
+  }
+
+  :global(.list-item) {
+    position: relative;
+    display: block;
+  }
+
+  :global(.list-item::before) {
+    position: relative;
+    display: inline-block;
+    content: "";
+    top: 9px;
+    left: 0;
+    margin-right: .5rem;
+  }
+
+  /* Default square bullet */
+  .default :global(.list-item::before) {
+    width: 16px;
+    height: 16px;
+    background-color: #D9D9D9;
+    border-radius: 3px;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  /* Checked variant */
+  .checked :global(.list-item::before) {
+    width: 24px;
+    height: 24px;
+    top: 18px;
+    margin-right: 2px;
+    transform: translateY(-50%);
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.55 18.4523L3.3978 12.3001L5.28912 10.4088L9.55 14.6697L18.7109 5.50879L20.6022 7.40011L9.55 18.4523Z' fill='%237CA02F'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+</style>
+
+<ul class:list={["list", variant, className]}>
+  <slot />
+</ul> 

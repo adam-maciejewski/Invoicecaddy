@@ -1,30 +1,31 @@
 ---
 // Destructure the properties from Astro.props
-const { title, url } = Astro.props;
+const { title, url, variant = "default" } = Astro.props;
 
 // Define TypeScript interface for the properties
 interface Props {
   title?: string;
   url?: string;
+  variant?: "default" | "white" | "big";
 }
-// Define CSS classes for the hyperlink button
-const baseClasses =
-  "inline-flex items-center justify-center gap-x-2 rounded-lg px-4 py-3 text-center text-sm font-medium text-neutral-600 shadow-xs outline-hidden ring-zinc-500 focus-visible:ring-3 transition duration-300";
-const borderClasses = "border border-neutral-200";
-const bgColorClasses = "bg-neutral-300";
-const hoverClasses =
-  "hover:bg-neutral-400/50 hover:text-neutral-600 active:text-neutral-700";
-const disableClasses = "disabled:pointer-events-none disabled:opacity-50";
-const fontSizeClasses = "2xl:text-base";
-const ringClasses = "ring-zinc-500";
 
-const darkClasses =
-  "dark:border-neutral-700 dark:bg-zinc-700 dark:text-neutral-300 dark:ring-zinc-200 dark:hover:bg-zinc-600 dark:focus:outline-hidden";
+// Define CSS classes for styling the button
+const baseClasses =
+  "group inline-flex items-center justify-center text-center rounded-md text-white ring-zinc-500 transition duration-300 focus-visible:ring-3 outline-hidden";
+const borderClasses = "border border-transparent";
+const bgColorClasses = variant === "white" 
+  ? "bg-white text-[#98B64B] hover:bg-neutral-50" 
+  : "bg-[#373738] hover:bg-black";
+const disableClasses = "disabled:pointer-events-none disabled:opacity-50";
+const sizeClasses = variant === "big" 
+  ? "px-[25px] py-[20px] text-[20px] font-semibold min-w-[260px]" 
+  : "px-5 py-[15px] text-base font-normal";
+const ringClasses = "dark:ring-zinc-200";
 ---
 
-<!-- Styled hyperlink -->
+<!-- Link styled as a button, with dynamic title and URL -->
 <a
-  class={`${baseClasses} ${borderClasses} ${bgColorClasses} ${hoverClasses} ${disableClasses} ${fontSizeClasses} ${ringClasses} ${darkClasses}`}
+  class={`${baseClasses} ${borderClasses} ${bgColorClasses} ${disableClasses} ${sizeClasses} ${ringClasses}`}
   href={url}
 >
   {title}

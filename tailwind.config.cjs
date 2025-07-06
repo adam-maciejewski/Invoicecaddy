@@ -5,6 +5,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      fontSize: {
+        '4xl': ['40px', { lineHeight: '1.1' }], // Ustawiamy rozmiar dla nagłówków sekcji
+      },
       colors: {
         primary: {
           DEFAULT: '#3B82F6', // main blue
@@ -15,12 +18,13 @@ module.exports = {
         accent: {
           DEFAULT: '#FBBF24', // yellow
         },
-        brandGreen: {
-          DEFAULT: '#788E45',
-        }
+        'brand-green': '#7ca02f',
+        'brand-green-dark': '#5C7A1D',
+        'play-overlay': 'rgba(17, 24, 39, 0.8)',
+        'play-overlay-hover': 'rgba(17, 24, 39, 0.6)',
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Montserrat', 'Inter', ...defaultTheme.fontFamily.sans],
       },
     },
   },

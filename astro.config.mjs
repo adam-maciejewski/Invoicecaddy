@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import compressor from "astro-compressor";
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,18 +24,12 @@ export default defineConfig({
   integrations: [
     sitemap(),
     compressor({
-    gzip: false,
-    brotli: true,
+      gzip: false,
+      brotli: true,
     }),
+    tailwind(),
   ],
   experimental: {
     clientPrerender: true,
-  },
-  vite: {
-    plugins: [tailwindcss({
-      config: {
-        path: './tailwind.config.cjs'
-      }
-    })],
   },
 });

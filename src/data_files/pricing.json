@@ -6,7 +6,7 @@
       "name": "Standard",
       "price": "$24.95",
       "billingFrequency": "/mo",
-      "description": "Ideal for businesses getting started with automated invoicing.",
+      "description": "",
       "features": [
         "Automated invoices",
         "Automated payment reminders",
@@ -18,8 +18,8 @@
         "Priority email support"
       ],
       "isFeatured": false,
-      "purchaseBtnTitle": "Sign Up",
-      "purchaseLink": "#"
+      "purchaseBtnTitle": "Schedule Demo",
+      "purchaseLink": "/demo"
     },
     {
       "name": "Plus",
@@ -32,8 +32,8 @@
         "Quickbooks Integration"
       ],
       "isFeatured": true,
-      "purchaseBtnTitle": "Sign Up",
-      "purchaseLink": "#"
+      "purchaseBtnTitle": "Schedule Demo",
+      "purchaseLink": "/demo"
     }
   ]
 }

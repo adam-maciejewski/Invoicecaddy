@@ -1,10 +1,13 @@
 ---
-import MainLayout from "@/layouts/MainLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import SectionHeading from "@components/ui/typography/SectionHeading.astro";
 ---
 
 <MainLayout>
   <div class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-    <h1 class="text-3xl font-bold">How It Works</h1>
+    <SectionHeading as="h1">
+      How It Works
+    </SectionHeading>
     <p class="mt-4">This page is under construction.</p>
   </div>
 </MainLayout> 

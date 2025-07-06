@@ -1,6 +1,7 @@
 ---
 // Import the necessary AccordionItem component and JSON data
 import AccordionItem from "@components/ui/blocks/AccordionItem.astro";
+import SectionHeading from "@components/ui/typography/SectionHeading.astro";
 
 // Define props from Astro
 const { title, faqs } = Astro.props;
@@ -31,11 +32,9 @@ const makeId = (base: any, index: any) => `${base}${index + 1}`;
   <div class="grid gap-10 md:grid-cols-5">
     <div class="md:col-span-2">
       <div class="max-w-xs">
-        <h2
-          class="text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
-        >
+        <SectionHeading>
           <Fragment set:html={title} />
-        </h2>
+        </SectionHeading>
         <p class="mt-1 hidden text-neutral-600 dark:text-neutral-400 md:block">
           {faqs.subTitle}
         </p>
